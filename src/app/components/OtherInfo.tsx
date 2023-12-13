@@ -27,11 +27,14 @@ const OtherInfo: React.FC<props> = ({ useFormHandler, handleNext,handleBack }) =
             where were you born ?
           </label>
           <input
-            {...useFormHandler.register("birth_place")}
+            {...useFormHandler.register("birth_place", {required:{ value: true}})}
             type="text"
             placeholder="Place of birth"
-            className="border-2 text-gray-400 border-gray-500  bg-black  outline-none rounded p-2 focus:border-blue-500"
-          />
+            className={`border-2 text-gray-400 border-gray-500  bg-black focus:border-blue-500 outline-none rounded p-2   ${
+              useFormHandler.formState.errors.birth_place
+                ? "border-red-500 focus:border-red-500"
+                : " "
+            }`}          />
         </div>
 
         <div className="grid">
@@ -39,11 +42,14 @@ const OtherInfo: React.FC<props> = ({ useFormHandler, handleNext,handleBack }) =
             what is your favorite city ?
           </label>
           <input
-            {...useFormHandler.register("favorite_city")}
+            {...useFormHandler.register("favorite_city", {required:{ value: true}})}
             type="text"
             placeholder="favorite city "
-            className="border-2 text-gray-400 border-gray-500  bg-black  outline-none rounded p-2 focus:border-blue-500"
-          />
+            className={`border-2 text-gray-400 border-gray-500  bg-black focus:border-blue-500 outline-none rounded p-2   ${
+              useFormHandler.formState.errors.favorite_city
+                ? "border-red-500 focus:border-red-500"
+                : " "
+            }`}          />
         </div>
 
         <div className="flex justify-between mt-4">

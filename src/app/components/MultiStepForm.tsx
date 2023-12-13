@@ -30,7 +30,6 @@ const [completed,setCompleted]= useState<boolean>(false)//to check if the form i
     setCompleted(true)
   }
 
-  console.log(currentStep);
   
 
   //NOTE - this renders the individual forms
@@ -51,10 +50,10 @@ const [completed,setCompleted]= useState<boolean>(false)//to check if the form i
     }
   };
   return (
-    <div className=" w-[80%] grid md:grid-cols-2 h-[80%] shadow-xl bg-slate-900">
+    <div className=" sm:w-[80%] grid md:grid-cols-2 h-[80%] shadow-xl bg-slate-900">
       <div className="flex justify-center items-center bg-slate-900 ">
         <div className="">
-        <StepperUi completed={completed} currentStep={currentStep}/>
+       {currentStep <5 &&  <StepperUi completed={completed} currentStep={currentStep}/>}
         {renderForm()}
         </div>
       

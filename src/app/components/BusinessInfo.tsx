@@ -25,18 +25,25 @@ const BusinessInfo: React.FC<props> = ({ useFormHandler, handleNext,handleBack }
               Business name
             </label>
             <input
-            {...useFormHandler.register("businessName")}
+            {...useFormHandler.register("businessName", {required:{ value: true}})}
               type="text"
               placeholder="Enter business name"
-              className="border-2 text-gray-400 border-gray-500 bg-black  outline-none rounded p-2 focus:border-blue-500"
-            />
+              className={`border-2 text-gray-400 border-gray-500  bg-black focus:border-blue-500 outline-none rounded p-2   ${
+                useFormHandler.formState.errors.businessName
+                  ? "border-red-500 focus:border-red-500"
+                  : " "
+              }`}            />
           </div>
         </div>
         <div className="grid">
           <label className="text-slate-400 pb-1" htmlFor="">
             Description
           </label>
-          <textarea {...useFormHandler.register("description")} className="border-2 text-gray-400 border-gray-500 bg-black  outline-none rounded p-2 focus:border-blue-500"></textarea>
+          <textarea {...useFormHandler.register("description" , {required:{ value: true}})}      className={`border-2 text-gray-400 border-gray-500  bg-black focus:border-blue-500 outline-none rounded p-2   ${
+              useFormHandler.formState.errors.description
+                ? "border-red-500 focus:border-red-500"
+                : " "
+            }`}></textarea>
         </div>
 
         <div className="flex justify-between mt-4">

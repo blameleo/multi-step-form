@@ -65,7 +65,7 @@ const ReviewPage: React.FC<props> = ({ useFormHandler, handleNext ,handleBack}) 
       <button onClick={()=>handleBack(1)} type="submit" className="bg-green-600 text-white p-2 rounded">
           Back
         </button>
-        <button type="submit" className="bg-green-600 text-white p-2 rounded">
+        <button onClick={()=>handleNext(1)} type="submit" className="bg-green-600 text-white p-2 rounded">
           Continue
         </button>
       </div>

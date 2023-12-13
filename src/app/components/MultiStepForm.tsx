@@ -5,33 +5,47 @@ import BusinessInfo from "./BusinessInfo";
 import OtherInfo from "./OtherInfo";
 import StepperUi from "./StepperUi";
 import Image from "next/image";
-// import formImage from "/image-1.jpg"
-type MultiStepFormProps = {
+import ReviewPage from "./ReviewPage";
+import SuccessPage from "./SuccessPage";
+
+
+type props = {
   useFormHandler: object
 }
 
 
-const MultiStepForm = ({useFormHandler}: MultiStepFormProps) => {
+const MultiStepForm = ({useFormHandler}: props) => {
   const [currentStep, setCurrentStep] = useState<number>(1); //NOTE - this tracks the current step of the whole form
   const totalSteps = 3; //NOTE - total steps for the whole form
 const [completed,setCompleted]= useState<boolean>(false)//to check if the form is completed
   //NOTE - FUNCTION TO move to next form 
+  
   const handleNext = (page: number) =>{
     setCurrentStep((prev: number)=> prev + page)
     setCompleted(true)
   }
 
+  const handleBack = (page: number)=>{
+    setCurrentStep((prev: number)=> prev - page)
+    setCompleted(true)
+  }
 
+  console.log(currentStep);
+  
 
   //NOTE - this renders the individual forms
   const renderForm = () => {
     switch (currentStep) {
       case 1:
-        return <UserInfoForm setCompleted={setCompleted} handleNext={handleNext} useFormHandler={useFormHandler} />;
+        return <UserInfoForm  handleNext={handleNext} useFormHandler={useFormHandler} />;
       case 2:
-        return <BusinessInfo />;
+        return <BusinessInfo handleBack={handleBack}  handleNext={handleNext} useFormHandler={useFormHandler}/>;
       case 3:
-        return <OtherInfo />;
+        return <OtherInfo handleBack={handleBack}  handleNext={handleNext} useFormHandler={useFormHandler}/>;
+        case 4:
+          return <ReviewPage handleBack={handleBack} handleNext={handleNext} useFormHandler={useFormHandler} />;
+          case 5:
+          return <SuccessPage />;
       default:
         return null;
     }

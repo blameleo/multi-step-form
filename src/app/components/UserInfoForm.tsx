@@ -2,12 +2,11 @@ import React from "react";
 
 type props = {
   useFormHandler: any,
-  handleNext: ()=>void,
-  setCompleted: React.Dispatch<React.SetStateAction<boolean>>
+  handleNext: (params: number)=>void,
 
 }
 
-const UserInfoForm: React.FC<props> = ({ useFormHandler,handleNext,setCompleted }) => {
+const UserInfoForm: React.FC<props> = ({ useFormHandler,handleNext }) => {
   //handle next form function
   const onSubmit = async (data: object) => {
    console.log(data);
@@ -41,7 +40,7 @@ const UserInfoForm: React.FC<props> = ({ useFormHandler,handleNext,setCompleted 
                 },
               })}
               placeholder="Enter first name"
-              className={`border-2 text-gray-400 border-gray-500 w-40 bg-black focus:border-blue-500 outline-none rounded p-2  ${
+              className={`border-2 text-gray-400 border-gray-500 w-52 bg-black focus:border-blue-500 outline-none rounded p-2  ${
                 useFormHandler.formState.errors.firstname
                   ? "border-red-500 focus:border-red-500"
                   : " "
@@ -65,7 +64,7 @@ const UserInfoForm: React.FC<props> = ({ useFormHandler,handleNext,setCompleted 
               })}
               placeholder="Enter last name"
               type="text"
-              className={`border-2 text-gray-400 border-gray-500 w-40 bg-black focus:border-blue-500 outline-none rounded p-2   ${
+              className={`border-2 text-gray-400 border-gray-500 w-52 bg-black focus:border-blue-500 outline-none rounded p-2   ${
                 useFormHandler.formState.errors.lastname
                   ? "border-red-500 focus:border-red-500"
                   : " "

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import '@progress/kendo-theme-default/dist/all.css';
+// import '@progress/kendo-theme-default/dist/all.css';
 
 
 const inter = Inter({ subsets: ['latin'] })
